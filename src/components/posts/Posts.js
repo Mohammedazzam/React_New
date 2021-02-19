@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Post from "./Post";
 
@@ -24,6 +24,25 @@ const Posts = () => {
     { id: 3, title: "post title 3", body: "post body ...", image: img3 },
   ]);
 
+  let [name, setName] = useState("Ali")
+
+  const changeName =() => {
+    setName("Hossam")
+  }
+
+  useEffect(() => {
+    console.log("empty UseEffect");
+  });
+
+  useEffect(() => {
+    console.log("empty Dep");
+  }, []);
+
+  useEffect(() => {
+    console.log("Posts State");
+  }, [posts]);
+
+
   const handleDelete = (id) => {
     let curPosts = [...posts];
     let newposts = curPosts.filter((post) => post.id !== id);
@@ -31,6 +50,7 @@ const Posts = () => {
   };
   return (
     <section className="posts">
+      <h2 onClick={changeName}>{name}</h2>
       {posts.map((post) => (
         <Post key={post.id} post={post} handleDelete={handleDelete} />
       ))}
