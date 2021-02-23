@@ -1,4 +1,3 @@
-  
 const Post = ({ post, handleDelete }) => {
   return (
     <div className="post">
